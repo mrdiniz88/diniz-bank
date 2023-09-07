@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id
+  document  String   @unique
+  fullName  String   @map("full_name")
+  account   Account?
+  accountId String?  @unique
+
+  @@map("users")
+}
+
+model Account {
+  id           String  @id
+  user         User    @relation(fields: [userId], references: [id])
+  email        String  @unique
+  userId       String  @unique
+  password     String
+  balance      Float
+  isShopkeeper Boolean @map("is_shopkeeper")
+
+  @@map("accounts")
+}
