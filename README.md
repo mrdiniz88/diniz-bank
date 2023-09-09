@@ -1,8 +1,5 @@
 <h1 align="center">Diniz Bank</h1>
 
-<h2 align="center">Simulador de transações bancárias.</h2>
-
-<hr>
 <br>
 
 ## Visão geral
@@ -14,24 +11,15 @@
 - Notification
 
 <h3>As funcionalidades de cada microsserviço foram dividídas da seguinte forma</h3>
-<br>
-<h3> O serviço <b>Account</b> conta com funcionalidades que serão usadas por um cliente da plataforma, entre elas estão</h3>
+<h3>O serviço <b>Account</b> conta com funcionalidades que serão usadas por um cliente da plataforma, entre elas estão</h3>
 
 - Criar uma conta
 - Fazer login
 - Solicitar uma transação
 
 <h3>além disso, nele guardamos o estado de coisas relacionadas a uma conta, como dados do usuário e o valor que o mesmo possui na conta.</h3>
-
-<br>
-
 <h3>O serviço de <b>Transaction</b> tem uma functionalidade chamada <b>ApproveTransaction</b> que atua como autorizador de transações solicitadas no serviço de <b>Account</b>, o mesmo tem a inteligência de aprovar ou negar uma transação, baseado na resposta de uma API REST que no momento se trata de um mock para simular o serviço autorizador (https://run.mocky.io/v3/8fafdd68-a090-496f-8c9a-3442cf30dae6). No serviço de transaction também contamos com o registro de uma transação e se ela foi aprovada, negada ou até mesmo se ocorreu algum erro no serviço autorizador.</h3>
-
-<br>
-
 <h3>Já o serviço <b>Notification</b> é responsável por enviar notificações, seja ela para um email, SMS ou algúm outro meio de contato. Por se tratar de uma simulação, útilizamos outro mock (http://o4d9z.mocklab.io/notify), esse por sua vez pode está indisponível/instável.</h3>
-
-<br>
 
 ## Observações
 
