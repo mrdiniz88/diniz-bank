@@ -76,8 +76,6 @@ export default class InMemoryAccountDatabase implements AccountRepository {
   async update(account: Account): Promise<void> {
     const accountDb = this.accountDatabase.get(account.id);
 
-    if (!accountDb) return;
-
-    accountDb.balance = account.getBalance();
+    accountDb!.balance = account.getBalance();
   }
 }
