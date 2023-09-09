@@ -1,7 +1,7 @@
 import { Router } from "express";
 import DoTransaction from "../../../../application/usecases/DoTransaction";
 import InputMoney from "../../../../application/usecases/InputMoney";
-import { accountRepository } from "../app";
+import { accountRepository, userRepository } from "../app";
 import { queue } from "../queues/AssertQueues";
 
 export const transactionRouter = Router();
@@ -9,10 +9,14 @@ export const transactionRouter = Router();
 transactionRouter.post("/", async (req, res, next) => {
   const { amount, receiverId, senderId } = req.body;
 
-  const approveTransaction = new DoTransaction(accountRepository, queue);
+  const doTransaction = new DoTransaction(
+    accountRepository,
+    userRepository,
+    queue
+  );
 
   try {
-    await approveTransaction.execute({
+    await doTransaction.execute({
       amount,
       receiverId,
       senderId,
@@ -28,10 +32,10 @@ transactionRouter.post("/:id", async (req, res, next) => {
   const { amount } = req.body;
   const id = req.params.id;
 
-  const approveTransaction = new InputMoney(accountRepository);
+  const inputMoney = new InputMoney(accountRepository);
 
   try {
-    await approveTransaction.execute({
+    await inputMoney.execute({
       amount,
       id,
     });

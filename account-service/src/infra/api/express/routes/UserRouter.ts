@@ -40,3 +40,7 @@ userRouter.post("/login", async (req, res, next) => {
     next(err);
   }
 });
+
+userRouter.post("/", (req, res) => {
+  res.status(400).send();
+});
