@@ -3,15 +3,27 @@ generator client {
 }
 
 datasource db {
-    provider = "sqlite"
+    provider = "postgresql"
     url      = env("DATABASE_URL")
 }
 
+enum STATUS {
+    PROCESSING
+    APPROVED
+    DENIED
+    ERROR
+}
+
 model Transaction {
-    id         String @id
-    senderId   String @map("sender_id")
-    receiverId String @map("receiver_id")
-    amount     Float
+    id           String   @id
+    senderId     String   @map("sender_id")
+    senderName   String   @map("sender_name")
+    receiverId   String   @map("receiver_id")
+    receiverName String   @map("receiver_name")
+    amount       Float
+    status       STATUS
+    createdAt    DateTime @map("created_at")
+    updatedAt    DateTime @map("updated_at")
 
     @@map("transactions")
 }
