@@ -41,6 +41,6 @@ export default class Account {
   }
 
   getBalance(): number {
-    return this.balance;
+    return Number(this.balance.toFixed(2));
   }
 }
