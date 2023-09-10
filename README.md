@@ -24,14 +24,17 @@
 ## Observações
 
 - Geral
-    - A comunicação entre nossos microsserviços é efetuada via [rabbitMQ](https://rabbitmq.com)
-    - Os nossos serviços contam com algúmas comportamentos e funcionalidades em casos de erros, entre eles estão
-      - Retry [exponencial](https://www.baeldung.com/resilience4j-backoff-jitter#exponentialbackoff)
-      - Envio da mensagem para uma [DLX](https://www.rabbitmq.com/dlx.html)    
+  - A comunicação entre nossos microsserviços é efetuada via [rabbitMQ](https://rabbitmq.com)
+  - Os nossos serviços contam com algúmas comportamentos e funcionalidades em casos de erros, entre eles estão
+    - Retry [exponencial](https://www.baeldung.com/resilience4j-backoff-jitter#exponentialbackoff)
+    - Envio da mensagem para uma [DLX](https://www.rabbitmq.com/dlx.html)
 - Regras de negócio
-    - Temos 2 tipos de usuários, os comuns e lojistas, ambos têm carteira com dinheiro e realizam transferências entre eles. 
-        - Usuários podem enviar dinheiro (efetuar transferência) para lojistas e entre usuários.
-        - Lojistas só recebem transferências, não enviam dinheiro para ninguém.
-    - Transferências a partir de uma conta sem saldo são possíveis
-    - A operação de transferência é uma transação (ou seja, é revertida em qualquer caso de inconsistência) e o dinheiro volta para o usuário que envia.
-    - No recebimento de pagamento, o usuário ou lojista recebe notificação (envio de email, sms) enviada por um serviço de terceiro.
+  - Temos 2 tipos de usuários, os comuns e lojistas, ambos têm carteira com dinheiro e realizam transferências entre eles.
+    - Usuários podem enviar dinheiro (efetuar transferência) para lojistas e entre usuários.
+    - Lojistas só recebem transferências, não enviam dinheiro para ninguém.
+  - Transferências a partir de uma conta sem saldo são possíveis
+  - A operação de transferência é uma transação (ou seja, é revertida em qualquer caso de inconsistência) e o dinheiro volta para o usuário que envia.
+  - No recebimento de pagamento, o usuário ou lojista recebe notificação (envio de email, sms) enviada por um serviço de terceiro.
+- O sistema está desenhado da seguinte forma
+
+![Alt](resources/diniz-bank.drawio.png)
