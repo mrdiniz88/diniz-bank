@@ -1,8 +1,5 @@
-import { PrismaClient } from "@prisma/client";
 import ApproveTransaction from "../../application/usecases/ApproveTransaction";
-import PrismaTransactionRepository from "../database/prisma/repository/PrismaTransactionRepository";
 import Queue from "./Queue";
-import RabbitMQAdapter from "./RabbitMQAdapter";
 
 export default class QueueController {
   constructor(queue: Queue, approveTransaction: ApproveTransaction) {
