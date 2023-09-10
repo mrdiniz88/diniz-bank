@@ -27,7 +27,11 @@ describe("do transaction", function () {
     queueMock.connect();
     login = new Login(userRepository, accountRepository);
     inputModey = new InputMoney(accountRepository);
-    doTransaction = new DoTransaction(accountRepository, queueMock);
+    doTransaction = new DoTransaction(
+      accountRepository,
+      userRepository,
+      queueMock
+    );
     transactionApproved = new TransactionApproved(
       accountRepository,
       userRepository,
