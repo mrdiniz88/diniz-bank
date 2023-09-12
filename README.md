@@ -37,4 +37,7 @@
   - No recebimento de pagamento, o usuário ou lojista recebe notificação (envio de email, sms) enviada por um serviço de terceiro.
 - O sistema está desenhado da seguinte forma
 
-![Alt](resources/diniz-bank.drawio.png)
+<div style="background-color: #fff; padding: 10px;">
+   <img src="resources/diniz-bank.drawio.png">
+</div>
+
